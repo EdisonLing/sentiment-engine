@@ -8,6 +8,8 @@ libobs-based capture/encode engine for Sentiment (IPC control plane)
 - read libobs spec and plan what capabilities are needed: implement the Engine Abstraction Layer (EAL) on libobs behind the EIL primitives. Will help avoid issues if backend switches off libobs, or we want fallback engine options (and for debugging and testing).
 - hook up the IPC translator so socket requests call the EIL, and engine events get pushed back to the client
 
+---
+
 ## Architecture
 
 ### Process / Entrypoint
@@ -22,6 +24,8 @@ after engine is fully functional, optional plan to add OS-native transfer paths 
 - Retrieve info from socket and translate directly to interface function calls
 - Turn engine events back into JSON pushes to the client
 
+---
+
 ### Engine Core
 
 #### Engine Interface Layer
@@ -34,10 +38,14 @@ Implements facade/primitives from EIL (leaving room for different paths). Primar
 #### Media / Output Component
 Where clips land on disk, naming, basic output metadata returned to the app via websocket
 
+---
+
 ### Engine Utils
 
 #### Platform Layer
 OS specific helpers/operations. Windows as current priority, implementation should have multiple OS specific paths in mind with future Linux and MacOS support intended.
+
+---
 
 ## Tests
 tdb
